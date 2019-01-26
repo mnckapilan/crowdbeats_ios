@@ -1,0 +1,6 @@
+module Pods_CrowdBeats {
+  umbrella header "Pods-CrowdBeats-umbrella.h"
+
+  export *
+  module * { export * }
+}
