@@ -10,12 +10,19 @@ import UIKit
 
 class AttendeeViewController: UIViewController , UITextFieldDelegate{
     
+    let alertController = UIAlertController(title: "Sorry", message: "Please, enter a valid key", preferredStyle: UIAlertController.Style.alert)
+    
     @IBOutlet weak var textfield: UITextField!
    
-    @IBAction func keyEnter(_ sender: Any) {
-        textfield.becomeFirstResponder()
+    
+    @IBAction func TextButton(_ sender: UIButton) {
+        
         if textfield.text!.isEmpty {
-            print("Empty key")
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        else {
+           let contr = UIViewController( self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
         }
     }
     

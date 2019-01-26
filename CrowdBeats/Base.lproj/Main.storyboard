@@ -151,18 +151,20 @@
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="keyEnter:" destination="OQY-b8-Asn" eventType="editingDidEnd" id="e4y-94-TX2"/>
-                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tev-mx-J6W">
                                                 <rect key="frame" x="0.0" y="134.5" width="375" height="67.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOs-lG-9hZ">
-                                                        <rect key="frame" x="184" y="37" width="83" height="23"/>
+                                                        <rect key="frame" x="112" y="35" width="151" height="24"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" title="Button"/>
+                                                        <color key="backgroundColor" red="0.060102539730000001" green="0.37761091320000001" blue="0.29170270749999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <state key="normal" title="JOIN EVENT">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
+                                                            <action selector="TextButton:" destination="OQY-b8-Asn" eventType="touchUpInside" id="0xY-vz-19R"/>
                                                             <segue destination="Gyx-1Q-roc" kind="modal" id="Woi-uM-fZG"/>
                                                         </connections>
                                                     </button>
@@ -194,6 +196,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textfield" destination="XuO-sE-QmC" id="yKs-Gh-4jB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alI-1L-JoC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -277,7 +282,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Woi-uM-fZG"/>
+        <segue reference="1VD-7L-F6J"/>
         <segue reference="IAs-RA-lfK"/>
     </inferredMetricsTieBreakers>
 </document>
