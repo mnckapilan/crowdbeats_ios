@@ -8,11 +8,19 @@
 
 import UIKit
 
-class AttendeeViewController: UIViewController {
-
+class AttendeeViewController: UIViewController , UITextFieldDelegate{
+    
+    @IBOutlet weak var textfield: UITextField!
+   
+    @IBAction func keyEnter(_ sender: Any) {
+        textfield.becomeFirstResponder()
+        if textfield.text!.isEmpty {
+            print("Empty key")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
