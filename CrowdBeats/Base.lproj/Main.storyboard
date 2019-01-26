@@ -145,18 +145,9 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSj-Nh-Hc2">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
-                                            </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xxxx" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-sE-QmC">
-                                                <rect key="frame" x="0.0" y="67.5" width="375" height="67"/>
-                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tev-mx-J6W">
-                                                <rect key="frame" x="0.0" y="134.5" width="375" height="67.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOs-lG-9hZ">
-                                                        <rect key="frame" x="112" y="35" width="151" height="24"/>
+                                                        <rect key="frame" x="86" y="22" width="151" height="24"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" red="0.060102539730000001" green="0.37761091320000001" blue="0.29170270749999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
@@ -169,6 +160,15 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                            </view>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xxxx" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-sE-QmC">
+                                                <rect key="frame" x="0.0" y="67.5" width="375" height="67"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tev-mx-J6W">
+                                                <rect key="frame" x="0.0" y="134.5" width="375" height="67.5"/>
                                             </view>
                                         </subviews>
                                     </stackView>
@@ -282,7 +282,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1VD-7L-F6J"/>
+        <segue reference="Woi-uM-fZG"/>
         <segue reference="IAs-RA-lfK"/>
     </inferredMetricsTieBreakers>
 </document>
