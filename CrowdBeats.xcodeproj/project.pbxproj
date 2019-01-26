@@ -18,6 +18,7 @@
 		C1E7120021FB5F690065A4A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1E711FE21FB5F690065A4A6 /* LaunchScreen.storyboard */; };
 		C1E7120B21FB5F690065A4A6 /* CrowdBeatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7120A21FB5F690065A4A6 /* CrowdBeatsTests.swift */; };
 		C1E7121621FB5F690065A4A6 /* CrowdBeatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7121521FB5F690065A4A6 /* CrowdBeatsUITests.swift */; };
+		DDE968B88FF171127CF7B78A /* libPods-CrowdBeats.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91284062C02E09B800DE61E9 /* libPods-CrowdBeats.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,9 @@
 /* Begin PBXFileReference section */
 		67D5D4A621FCC51900BE3A2B /* AttendeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeViewController.swift; sourceTree = "<group>"; };
 		67D5D4A821FCD4CF00BE3A2B /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		8CDDDE73EFC228B309F1E385 /* Pods-CrowdBeats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrowdBeats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CrowdBeats/Pods-CrowdBeats.debug.xcconfig"; sourceTree = "<group>"; };
+		91284062C02E09B800DE61E9 /* libPods-CrowdBeats.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CrowdBeats.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C00B66FECDB2A61FB9E636A4 /* Pods-CrowdBeats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrowdBeats.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrowdBeats/Pods-CrowdBeats.release.xcconfig"; sourceTree = "<group>"; };
 		C1E711EE21FB5F660065A4A6 /* CrowdBeats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrowdBeats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1E711F121FB5F660065A4A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1E711F321FB5F660065A4A6 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDE968B88FF171127CF7B78A /* libPods-CrowdBeats.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18A261F3EF340BFC1BD8CD16 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				91284062C02E09B800DE61E9 /* libPods-CrowdBeats.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8119088D5C367B2485E8C120 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8CDDDE73EFC228B309F1E385 /* Pods-CrowdBeats.debug.xcconfig */,
+				C00B66FECDB2A61FB9E636A4 /* Pods-CrowdBeats.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C1E711E521FB5F660065A4A6 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +111,8 @@
 				C1E7120921FB5F690065A4A6 /* CrowdBeatsTests */,
 				C1E7121421FB5F690065A4A6 /* CrowdBeatsUITests */,
 				C1E711EF21FB5F660065A4A6 /* Products */,
+				8119088D5C367B2485E8C120 /* Pods */,
+				18A261F3EF340BFC1BD8CD16 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +168,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1E7121A21FB5F690065A4A6 /* Build configuration list for PBXNativeTarget "CrowdBeats" */;
 			buildPhases = (
+				6EB20308D5E342A279878B20 /* [CP] Check Pods Manifest.lock */,
 				C1E711EA21FB5F660065A4A6 /* Sources */,
 				C1E711EB21FB5F660065A4A6 /* Frameworks */,
 				C1E711EC21FB5F660065A4A6 /* Resources */,
@@ -262,6 +287,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6EB20308D5E342A279878B20 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CrowdBeats-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C1E711EA21FB5F660065A4A6 /* Sources */ = {
@@ -446,6 +496,7 @@
 		};
 		C1E7121B21FB5F690065A4A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CDDDE73EFC228B309F1E385 /* Pods-CrowdBeats.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -465,6 +516,7 @@
 		};
 		C1E7121C21FB5F690065A4A6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C00B66FECDB2A61FB9E636A4 /* Pods-CrowdBeats.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
