@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67D5D4A721FCC51900BE3A2B /* AttendeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5D4A621FCC51900BE3A2B /* AttendeeViewController.swift */; };
 		C1E711F221FB5F660065A4A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E711F121FB5F660065A4A6 /* AppDelegate.swift */; };
 		C1E711F421FB5F660065A4A6 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E711F321FB5F660065A4A6 /* RootViewController.swift */; };
 		C1E711F621FB5F660065A4A6 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E711F521FB5F660065A4A6 /* DataViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67D5D4A621FCC51900BE3A2B /* AttendeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeViewController.swift; sourceTree = "<group>"; };
 		C1E711EE21FB5F660065A4A6 /* CrowdBeats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrowdBeats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1E711F121FB5F660065A4A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1E711F321FB5F660065A4A6 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				C1E711FC21FB5F690065A4A6 /* Assets.xcassets */,
 				C1E711FE21FB5F690065A4A6 /* LaunchScreen.storyboard */,
 				C1E7120121FB5F690065A4A6 /* Info.plist */,
+				67D5D4A621FCC51900BE3A2B /* AttendeeViewController.swift */,
 			);
 			path = CrowdBeats;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				C1E711F421FB5F660065A4A6 /* RootViewController.swift in Sources */,
 				C1E711F821FB5F660065A4A6 /* ModelController.swift in Sources */,
 				C1E711F621FB5F660065A4A6 /* DataViewController.swift in Sources */,
+				67D5D4A721FCC51900BE3A2B /* AttendeeViewController.swift in Sources */,
 				C1E711F221FB5F660065A4A6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,7 +445,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8D9PAKRRB8;
 				INFOPLIST_FILE = CrowdBeats/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,7 +464,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8D9PAKRRB8;
 				INFOPLIST_FILE = CrowdBeats/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -515,12 +523,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8D9PAKRRB8;
 				INFOPLIST_FILE = CrowdBeatsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = kapilan.CrowdBeatsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -534,12 +545,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8D9PAKRRB8;
 				INFOPLIST_FILE = CrowdBeatsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = kapilan.CrowdBeatsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
