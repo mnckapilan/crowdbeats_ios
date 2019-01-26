@@ -1,23 +1,17 @@
 //
-//  PlaylistViewController.swift
+//  SongSearchTableViewController.swift
 //  CrowdBeats
 //
-//  Created by Blanca Tebar on 26/01/2019.
+//  Created by Lloyd Clowes on 26/01/2019.
 //  Copyright © 2019 kapilan. All rights reserved.
 //
 
 import UIKit
 
-class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
+class SongSearchTableViewController: UITableViewController, UISearchResultsUpdating {
     
-    func didPressButton(_ tag: Int) {
-        <#code#>
-    }
-    
-    
-//    var songs = [String]()
-    let songs = [(song: "Despacito", artist: "Luis Fonsi"),
-                 (song: "Can't Hold Us", artist: "Macklemore and Ryan Lewis")]
+    var results = [String]()
+    var resultSearchController = UISearchController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +22,14 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        results.removeAll(keepingCapacity: false)
+
+//        results =
+        
+        self.tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
@@ -36,27 +38,19 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songs.count
-    }
-    
-    class PlaylistCell : UITableViewCell
-    {
-        var cellDelegate: PlaylistCellDelegate?
-        
-        @IBOutlet weak var songTitle: UILabel!
-        
-        @IBAction func upvoteButtonPressed(_ sender: UIButton) {
-            cellDelegate?.didPressButton(sender.tag)
+        if  (resultSearchController.isActive) {
+            return results.count
+        } else {
+            return 0
         }
-        
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath)
-
-        cell.textLabel?.text = songs[indexPath.row].song
-        cell.detailTextLabel?.text = songs[indexPath.row].artist
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        if (resultSearchController.isActive) {
+            cell.textLabel?.text = results[indexPath.row]
+        }
         return cell
     }
 
@@ -105,10 +99,4 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     }
     */
 
-    @IBAction func addButton(_ sender: UIBarButtonItem) {
-    }
-}
-
-protocol PlaylistCellDelegate : class {
-    func didPressButton(_ tag: Int)
 }
