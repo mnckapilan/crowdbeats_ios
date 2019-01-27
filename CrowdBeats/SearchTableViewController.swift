@@ -25,7 +25,7 @@ class SongSearchTableViewController: UITableViewController, UISearchResultsUpdat
     func updateSearchResults(for searchController: UISearchController) {
         results.removeAll(keepingCapacity: false)
         
-        //        results =
+        results = 
         
         self.tableView.reloadData()
     }
