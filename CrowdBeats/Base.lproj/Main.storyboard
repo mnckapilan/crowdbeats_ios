@@ -155,7 +155,6 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="TextButton:" destination="OQY-b8-Asn" eventType="touchUpInside" id="0xY-vz-19R"/>
-                                                            <segue destination="Gyx-1Q-roc" kind="modal" id="Woi-uM-fZG"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -200,16 +199,17 @@
                     </navigationItem>
                     <connections>
                         <outlet property="textfield" destination="XuO-sE-QmC" id="yKs-Gh-4jB"/>
+                        <segue destination="Gyx-1Q-roc" kind="show" identifier="Next" id="qdc-0W-Ggx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alI-1L-JoC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2272.8000000000002" y="-243.32833583208398"/>
+            <point key="canvasLocation" x="2382" y="-195"/>
         </scene>
         <!--Playlist-->
         <scene sceneID="Shv-bg-0N8">
             <objects>
-                <tableViewController id="9RV-BV-I0P" customClass="PlaylistViewController" customModule="CrowdBeats" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="playlistView" id="9RV-BV-I0P" customClass="PlaylistViewController" customModule="CrowdBeats" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tqC-b0-hic">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -365,7 +365,7 @@
         <!--Navigation Controller-->
         <scene sceneID="duR-jR-rf0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gyx-1Q-roc" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Next" automaticallyAdjustsScrollViewInsets="NO" id="Gyx-1Q-roc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gMi-M0-TUO">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -400,7 +400,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AEV-Ql-9BO"/>
+        <segue reference="qdc-0W-Ggx"/>
         <segue reference="IAs-RA-lfK"/>
     </inferredMetricsTieBreakers>
 </document>

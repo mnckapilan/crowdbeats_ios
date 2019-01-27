@@ -25,6 +25,7 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     func didPressButton(_ sender: PlaylistCell) {
         sender.upvoteButton.isSelected = true
         sender.upvoteButton.isUserInteractionEnabled = false
+//        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/vote")
         print("UPVOTE BUTTON PRESSED IN CELL: \(sender.index.text!)")
     }
 
