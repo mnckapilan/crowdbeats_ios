@@ -10,11 +10,6 @@ import UIKit
 
 class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
-    func didPressButton(_ tag: Int) {
-        print("TAG: \(tag)")
-    }
-    
-    
 //    var songs = [String]()
     let songs = [(song: "Despacito", artist: "Luis Fonsi"),
                  (song: "Can't Hold Us", artist: "Macklemore and Ryan Lewis")]
@@ -25,11 +20,11 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
-    // MARK: - Table view data source
+    
+    func didPressButton(_ sender: PlaylistCell) {
+        print("UPVOTE BUTTON PRESSED IN CELL: \(sender.index.text!)")
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -38,80 +33,36 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return songs.count
     }
-    
-    class PlaylistCell : UITableViewCell
-    {
-        var cellDelegate: PlaylistCellDelegate?
-        
-        @IBOutlet weak var index: UILabel!
-        @IBOutlet weak var songTitle: UILabel!
-        
-        @IBAction func upvoteButtonPressed(_ sender: UIButton) {
-            cellDelegate?.didPressButton(sender.tag)
-            print("UPVOTE BUTTON PRESSED")
-        }
-        
-    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistCell
 
         cell.index.text = String(indexPath.row)
         cell.songTitle.text = songs[indexPath.row].song
-//        cell.artistTitle.text = songs[indexPath.row].artist
+        cell.artistLabel.text = songs[indexPath.row].artist
+        cell.cellDelegate = self
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func addButton(_ sender: UIBarButtonItem) {
     }
 }
 
 protocol PlaylistCellDelegate : class {
-    func didPressButton(_ tag: Int)
+    func didPressButton(_ sender: PlaylistCell)
+}
+
+class PlaylistCell : UITableViewCell
+{
+    var cellDelegate: PlaylistCellDelegate?
+    
+    @IBOutlet weak var index: UILabel!
+    @IBOutlet weak var songTitle: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
+    
+    @IBAction func upvoteButtonPressed(_ sender: UIButton) {
+        cellDelegate?.didPressButton(self)
+    }
+    
 }
