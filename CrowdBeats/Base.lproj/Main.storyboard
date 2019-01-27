@@ -163,7 +163,7 @@
                                                     <constraint firstItem="EOs-lG-9hZ" firstAttribute="centerX" secondItem="CSj-Nh-Hc2" secondAttribute="centerX" id="5kA-cF-thE"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xxxx" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-sE-QmC">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xxxx" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-sE-QmC">
                                                 <rect key="frame" x="0.0" y="67.5" width="375" height="67"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -215,7 +215,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaylistCell" id="ONg-HU-qVT" customClass="PlaylistCell" customModule="CrowdBeats" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlaylistCell" id="ONg-HU-qVT" customClass="PlaylistCell" customModule="CrowdBeats" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ONg-HU-qVT" id="Y0S-hj-E12" customClass="PlaylistCell" customModule="CrowdBeats" customModuleProvider="target">
@@ -262,6 +262,7 @@
                                     <outlet property="artistLabel" destination="f5w-qe-TaT" id="Bx6-Zm-LbI"/>
                                     <outlet property="index" destination="UGf-Mi-MIY" id="gx9-GM-AG2"/>
                                     <outlet property="songTitle" destination="Muv-y7-Ftn" id="9vT-7g-dmc"/>
+                                    <outlet property="upvoteButton" destination="6Yy-98-u7R" id="EgW-VM-UT4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -399,7 +400,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GDp-nZ-nrG"/>
         <segue reference="AEV-Ql-9BO"/>
         <segue reference="IAs-RA-lfK"/>
     </inferredMetricsTieBreakers>
