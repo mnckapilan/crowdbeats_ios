@@ -47,14 +47,26 @@ class AttendeeViewController: UIViewController , UITextFieldDelegate{
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "Next", sender: nil)
                     }
-                }
-                    } catch let parsingError {
-                        print("Error", parsingError)
+                } else {
+                    print(1)
+                    let alertcontroller = UIAlertController(title: "Invalid Event ID", message: "This event ID is not registered on our systems. Please enter a valid event ID.", preferredStyle: .alert)
+                    alertcontroller.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    print(2)
+                    DispatchQueue.main.async {
+                        self.present(alertcontroller, animated: true, completion: nil)
                     }
+                    print(3)
+//                    let alert = UIAlertController(title: "Invalid Event ID", message: "This event ID is not registered on our systems. Please enter a valid event ID.", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                    self.present(alert, animated: true, completion: nil)
+                }
+            } catch let parsingError {
+                print("Error", parsingError)
             }
-            task.resume()
-            
         }
+        task.resume()
+            
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
