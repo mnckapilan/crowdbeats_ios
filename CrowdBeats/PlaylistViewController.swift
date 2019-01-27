@@ -114,7 +114,7 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistCell
         
         
-        cell.index.text = String(indexPath.row)
+        cell.index.text = String(indexPath.row + 1)
         cell.songTitle.text = songs[indexPath.row].song
         cell.artistLabel.text = songs[indexPath.row].artist
         cell.cellDelegate = self
