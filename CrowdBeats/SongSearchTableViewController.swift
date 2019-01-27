@@ -8,53 +8,52 @@
 
 import UIKit
 
-class SongSearchTableViewController: UITableViewController, UISearchResultsUpdating {
+class SongSearchTableViewController: UITableViewController {
     
     var party_id:String = ""
-    
+    var array:[String:Any] = [:]
     
     var results = [String]()
-    var resultSearchController = UISearchController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        results.removeAll(keepingCapacity: false)
-
-        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/pla")
-        
-        comp!.queryItems = [URLQueryItem(name: "party_id", value: "ElP91"), URLQueryItem(name: "search", value: searchController.searchBar.text!)]
-        
-        let url : URL = comp!.url!
-        
-        print(url)
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let dataResponse = data,
-                error == nil else {
-                    print(error?.localizedDescription ?? "Response Error")
-                    return }
-            do{
-                //here dataResponse received from a network request
-                let jsonResponse = try JSONSerialization.jsonObject(with:
-                    dataResponse, options: [])
-                print(jsonResponse) //Response result
-                //                print(jsonResponse)
-                let array = jsonResponse as? [String: Any]
-//                guard let num = min(array?["tracks"]["limit"], array?["tracks"]["total"]) as? Int else { return }
-
-            } catch let parsingError {
-                print("Error", parsingError)
-            }
-        }
-        task.resume()
-        
-//        results =
-        
-        self.tableView.reloadData()
-    }
+//
+//    func updateSearchResults(for searchController: UISearchController) {
+//        results.removeAll(keepingCapacity: false)
+//
+//        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/pla")
+//
+//        comp!.queryItems = [URLQueryItem(name: "party_id", value: "ElP91"), URLQueryItem(name: "search", value: searchController.searchBar.text!)]
+//
+//        let url : URL = comp!.url!
+//
+//        print(url)
+//
+//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+//            guard let dataResponse = data,
+//                error == nil else {
+//                    print(error?.localizedDescription ?? "Response Error")
+//                    return }
+//            do{
+//                //here dataResponse received from a network request
+//                let jsonResponse = try JSONSerialization.jsonObject(with:
+//                    dataResponse, options: [])
+//                print(jsonResponse) //Response result
+//                //                print(jsonResponse)
+//                let array = jsonResponse as? [String: Any]
+////                guard let num = min(array?["tracks"]["limit"], array?["tracks"]["total"]) as? Int else { return }
+//
+//            } catch let parsingError {
+//                print("Error", parsingError)
+//            }
+//        }
+//        task.resume()
+//
+////        results =
+//
+//        self.tableView.reloadData()
+//    }
 
     // MARK: - Table view data source
 
@@ -63,19 +62,21 @@ class SongSearchTableViewController: UITableViewController, UISearchResultsUpdat
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if  (resultSearchController.isActive) {
-            return results.count
-        } else {
-            return 0
-        }
+//        if  (resultSearchController.isActive) {
+//            return results.count
+//        } else {
+//            return 0
+//        }
+        return results.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        if (resultSearchController.isActive) {
-            cell.textLabel?.text = results[indexPath.row]
-        }
+//        array[indexPath]
+//        cell.textLabel?.text = array[indexPath]["name"] as? String
+//        if (resultSearchController.isActive) {
+//            cell.textLabel?.text = results[indexPath.row]
+//        }
         return cell
     }
 

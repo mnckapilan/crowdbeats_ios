@@ -28,8 +28,6 @@ class AttendeeViewController: UIViewController , UITextFieldDelegate{
         party_id = textfield.text!
         comp!.queryItems = [URLQueryItem(name: "party_id", value: party_id)]
         
-        
-        
         let url : URL = comp!.url!
         
         print(url)
@@ -39,7 +37,7 @@ class AttendeeViewController: UIViewController , UITextFieldDelegate{
                 error == nil else {
                     print(error?.localizedDescription ?? "Response Error")
                     return }
-            do{
+            do {
                 //here dataResponse received from a network request
                 let jsonResponse = try JSONSerialization.jsonObject(with:
                     dataResponse, options: [])
