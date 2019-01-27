@@ -22,24 +22,36 @@ class AttendeeViewController: UIViewController , UITextFieldDelegate{
             self.present(alertController, animated: true, completion: nil)
         }
             
-        guard let url = URL(string: "https://crowdbeats-host.herokuapp.com/blancaexample") else {return}
+        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/newguest")
+        
+        comp!.queryItems = [URLQueryItem(name: "party_id", value: textfield.text)]
+        
+        let url : URL = comp!.url!
+        
+        print(url)
+        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let dataResponse = data,
                 error == nil else {
                     print(error?.localizedDescription ?? "Response Error")
                     return }
             do{
-                //here dataResponse received from a network request
-                let jsonResponse = try JSONSerialization.jsonObject(with:
-                    dataResponse, options: [])
-                print(jsonResponse) //Response result
-            } catch let parsingError {
-                print("Error", parsingError)
+                        //here dataResponse received from a network request
+                        let jsonResponse = try JSONSerialization.jsonObject(with:
+                            dataResponse, options: [])
+                        print(jsonResponse) //Response result
+                        //                print(jsonResponse)
+                        let array = jsonResponse as? [String: Any]
+                        guard let success = array?["success"] as? String else { return }
+                    
+                    
+                    } catch let parsingError {
+                        print("Error", parsingError)
+                    }
             }
+            task.resume()
+            
         }
-        task.resume()
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
