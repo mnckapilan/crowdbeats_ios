@@ -62,10 +62,31 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
     
     func didPressButton(_ sender: PlaylistCell) {
+        print("UPVOTE BUTTON PRESSED IN CELL: \(sender.index.text!)")
+        
         sender.upvoteButton.isSelected = true
         sender.upvoteButton.isUserInteractionEnabled = false
-//        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/vote")
-        print("UPVOTE BUTTON PRESSED IN CELL: \(sender.index.text!)")
+        
+        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/vote")
+        comp!.queryItems = [URLQueryItem(name: "id", value: songs[Int(sender.index.text!)!].id)]
+        let url : URL = comp!.url!
+        print(url)
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let dataResponse = data,
+                error == nil else {
+                    print(error?.localizedDescription ?? "Response Error")
+                    return }
+            do{
+                //here dataResponse received from a network request
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                    dataResponse, options: [])
+                print(jsonResponse) //Response result
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+        }
+        task.resume()
+        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -87,7 +108,7 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistCell
         
         
-        cell.index.text = String(indexPath.row)
+        cell.index.text = String(indexPath.row + 1)
         cell.songTitle.text = songs[indexPath.row].song
         cell.artistLabel.text = songs[indexPath.row].artist
         cell.cellDelegate = self
