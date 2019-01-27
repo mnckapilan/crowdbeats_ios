@@ -36,15 +36,18 @@ class AttendeeViewController: UIViewController , UITextFieldDelegate{
                     print(error?.localizedDescription ?? "Response Error")
                     return }
             do{
-                        //here dataResponse received from a network request
-                        let jsonResponse = try JSONSerialization.jsonObject(with:
-                            dataResponse, options: [])
-                        print(jsonResponse) //Response result
-                        //                print(jsonResponse)
-                        let array = jsonResponse as? [String: Any]
-                        guard let success = array?["success"] as? String else { return }
-                    
-                    
+                //here dataResponse received from a network request
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                    dataResponse, options: [])
+                print(jsonResponse) //Response result
+                //                print(jsonResponse)
+                let array = jsonResponse as? [String: Any]
+                guard let success = array?["success"] as? Int else { return }
+                if success == 1 {
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "Next", sender: nil)
+                    }
+                }
                     } catch let parsingError {
                         print("Error", parsingError)
                     }

@@ -10,9 +10,6 @@ import UIKit
 
 class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
-//    var songs = [String]()
-   
-    
     var songs = [(song: "Despacito", artist: "Luis Fonsi", id: "obcowbdeub"),
                  (song: "Can't Hold Us", artist: "Macklemore and Ryan Lewis", id:"ouwebcobco")]
 
@@ -58,6 +55,9 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
     
     func didPressButton(_ sender: PlaylistCell) {
+        sender.upvoteButton.isSelected = true
+        sender.upvoteButton.isUserInteractionEnabled = false
+//        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/vote")
         print("UPVOTE BUTTON PRESSED IN CELL: \(sender.index.text!)")
     }
 
@@ -82,7 +82,6 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
         
         cell.index.text = String(indexPath.row)
         cell.songTitle.text = songs[indexPath.row].song
-        
         cell.artistLabel.text = songs[indexPath.row].artist
         cell.cellDelegate = self
 
@@ -100,6 +99,8 @@ protocol PlaylistCellDelegate : class {
 class PlaylistCell : UITableViewCell
 {
     var cellDelegate: PlaylistCellDelegate?
+    
+    @IBOutlet weak var upvoteButton: UIButton!
     
     @IBOutlet weak var index: UILabel!
     @IBOutlet weak var songTitle: UILabel!
