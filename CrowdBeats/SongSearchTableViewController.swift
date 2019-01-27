@@ -10,6 +10,9 @@ import UIKit
 
 class SongSearchTableViewController: UITableViewController, UISearchResultsUpdating {
     
+    var party_id:String = ""
+    
+    
     var results = [String]()
     var resultSearchController = UISearchController()
 
@@ -76,4 +79,13 @@ class SongSearchTableViewController: UITableViewController, UISearchResultsUpdat
         return cell
     }
 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is SongSearchTableViewController
+        {
+            let vc = segue.destination as? SongSearchTableViewController
+            vc?.party_id = party_id
+        }
+    }
 }

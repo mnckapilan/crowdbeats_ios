@@ -10,6 +10,8 @@ import UIKit
 
 class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
+    var party_id:String = ""
+    
     var songs = [(song: "Despacito", artist: "Luis Fonsi", id: "obcowbdeub"),
                  (song: "Can't Hold Us", artist: "Macklemore and Ryan Lewis", id:"ouwebcobco")]
 
@@ -18,6 +20,8 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         songs = []
+        
+        print(party_id)
         let myurl = "https://crowdbeats-host.herokuapp.com/playlist"
         
         
@@ -28,10 +32,11 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
             let data: Data = try Data(contentsOf: url as URL)
             
             jsonArray = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSMutableArray
-            print(jsonArray.count)
+            
+            
             // Looping through jsonArray
             for i in 0..<jsonArray.count {
-                print(1)
+                
                 // Create Blog Object
                 guard let ID: String = (jsonArray[i] as AnyObject).object(forKey: "id") as? String,
                     let Name: String = (jsonArray[i] as AnyObject).object(forKey: "name") as? String
@@ -39,7 +44,7 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
                         print("Error")
                         return
                     }
-                print(3)
+                
                 // Add Blog Objects to mainArray
                 songs.append((song: Name, artist: "", id: ID))
             }
@@ -55,10 +60,31 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
     
     func didPressButton(_ sender: PlaylistCell) {
+        print("UPVOTE BUTTON PRESSED IN CELL: \(sender.index.text!)")
+        
         sender.upvoteButton.isSelected = true
         sender.upvoteButton.isUserInteractionEnabled = false
-//        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/vote")
-        print("UPVOTE BUTTON PRESSED IN CELL: \(sender.index.text!)")
+        
+        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/vote")
+        comp!.queryItems = [URLQueryItem(name: "id", value: songs[Int(sender.index.text!)!].id)]
+        let url : URL = comp!.url!
+        print(url)
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let dataResponse = data,
+                error == nil else {
+                    print(error?.localizedDescription ?? "Response Error")
+                    return }
+            do{
+                //here dataResponse received from a network request
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                    dataResponse, options: [])
+                print(jsonResponse) //Response result
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+        }
+        task.resume()
+        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,6 +95,14 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
         
         return songs.count
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let data = party_id
+        let navVC = segue.destination as! UINavigationController
+        
+        let tableVC = navVC.viewControllers.first as! SongSearchTableViewController
+        tableVC.party_id = data
+        
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
