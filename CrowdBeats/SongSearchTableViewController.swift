@@ -13,19 +13,25 @@ class SongSearchTableViewController: UITableViewController, UISearchResultsUpdat
     var party_id:String = ""
     
     
+    @IBOutlet weak var searchBar: UISearchBar!
     var results = [String]()
     var resultSearchController = UISearchController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        resultSearchController.searchResultsUpdater = self
+        resultSearchController.obscuresBackgroundDuringPresentation = false
+        resultSearchController.searchBar.placeholder = "Search songs"
+        navigationItem.searchController = resultSearchController
+        definesPresentationContext = true
     }
     
     func updateSearchResults(for searchController: UISearchController) {
         results.removeAll(keepingCapacity: false)
-
-        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/pla")
         
-        comp!.queryItems = [URLQueryItem(name: "party_id", value: "ElP91"), URLQueryItem(name: "search", value: searchController.searchBar.text!)]
+        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/search")
+        
+        comp!.queryItems = [URLQueryItem(name: "party_id", value: party_id), URLQueryItem(name: "search", value: searchController.searchBar.text!)]
         
         let url : URL = comp!.url!
         
@@ -37,6 +43,8 @@ class SongSearchTableViewController: UITableViewController, UISearchResultsUpdat
                     print(error?.localizedDescription ?? "Response Error")
                     return }
             do{
+                
+                print("HELO")
                 //here dataResponse received from a network request
                 let jsonResponse = try JSONSerialization.jsonObject(with:
                     dataResponse, options: [])
@@ -49,7 +57,7 @@ class SongSearchTableViewController: UITableViewController, UISearchResultsUpdat
                 print("Error", parsingError)
             }
         }
-        task.resume()
+        //task.resume()
         
 //        results =
         
@@ -80,12 +88,6 @@ class SongSearchTableViewController: UITableViewController, UISearchResultsUpdat
     }
 
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is SongSearchTableViewController
-        {
-            let vc = segue.destination as? SongSearchTableViewController
-            vc?.party_id = party_id
-        }
-    }
+    
 }
+    

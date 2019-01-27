@@ -317,7 +317,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Search" id="9y2-4X-Csv">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8wn-IJ-LP4"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8wn-IJ-LP4">
+                            <connections>
+                                <segue destination="9RV-BV-I0P" kind="modal" id="ywH-R4-qZg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="07M-On-ogA" id="Eky-jm-Dk6"/>
@@ -392,6 +396,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DFm-rX-4wV"/>
+        <segue reference="ch8-Nv-JCo"/>
+        <segue reference="ywH-R4-qZg"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -37,6 +37,8 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
             // Looping through jsonArray
             for i in 0..<jsonArray.count {
                 
+                
+            
                 // Create Blog Object
                 guard let ID: String = (jsonArray[i] as AnyObject).object(forKey: "id") as? String,
                     let Name: String = (jsonArray[i] as AnyObject).object(forKey: "name") as? String
@@ -44,7 +46,7 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
                         print("Error")
                         return
                     }
-                
+                print(3)
                 // Add Blog Objects to mainArray
                 songs.append((song: Name, artist: "", id: ID))
             }
@@ -74,14 +76,6 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
         
         return songs.count
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let data = party_id
-        let navVC = segue.destination as! UINavigationController
-        
-        let tableVC = navVC.viewControllers.first as! SongSearchTableViewController
-        tableVC.party_id = data
-        
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
