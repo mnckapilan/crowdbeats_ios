@@ -163,7 +163,7 @@
                                                     <constraint firstItem="EOs-lG-9hZ" firstAttribute="centerX" secondItem="CSj-Nh-Hc2" secondAttribute="centerX" id="5kA-cF-thE"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xxxx" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-sE-QmC">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-sE-QmC">
                                                 <rect key="frame" x="0.0" y="67.5" width="375" height="67"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -399,7 +399,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AEV-Ql-9BO"/>
+        <segue reference="Woi-uM-fZG"/>
         <segue reference="IAs-RA-lfK"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,6 +20,7 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     var jsonArray: NSMutableArray = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        songs = []
         let myurl = "https://crowdbeats-host.herokuapp.com/playlist"
         
         
