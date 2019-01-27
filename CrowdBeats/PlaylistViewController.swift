@@ -10,9 +10,9 @@ import UIKit
 
 class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
-//    var songs = [String]()
-    let songs = [(song: "Despacito", artist: "Luis Fonsi"),
-                 (song: "Can't Hold Us", artist: "Macklemore and Ryan Lewis")]
+//    var songs = [Song]()
+    let songs = [Song(title: "Despacito", artist: "Luis Fonsi", ID: "123"),
+                 Song(title: "Can't Hold Us", artist: "Macklemore and Ryan Lewis", ID: "124")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,8 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     }
     
     func didPressButton(_ sender: PlaylistCell) {
+        sender.upvoteButton.isSelected = true
+        sender.upvoteButton.isUserInteractionEnabled = false
         print("UPVOTE BUTTON PRESSED IN CELL: \(sender.index.text!)")
     }
 
@@ -38,7 +40,7 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistCell
 
         cell.index.text = String(indexPath.row)
-        cell.songTitle.text = songs[indexPath.row].song
+        cell.songTitle.text = songs[indexPath.row].title
         cell.artistLabel.text = songs[indexPath.row].artist
         cell.cellDelegate = self
 
@@ -56,6 +58,8 @@ protocol PlaylistCellDelegate : class {
 class PlaylistCell : UITableViewCell
 {
     var cellDelegate: PlaylistCellDelegate?
+    
+    @IBOutlet weak var upvoteButton: UIButton!
     
     @IBOutlet weak var index: UILabel!
     @IBOutlet weak var songTitle: UILabel!
