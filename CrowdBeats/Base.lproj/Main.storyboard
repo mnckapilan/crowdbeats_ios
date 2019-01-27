@@ -248,6 +248,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="index" destination="UGf-Mi-MIY" id="gx9-GM-AG2"/>
                                     <outlet property="songTitle" destination="Muv-y7-Ftn" id="9vT-7g-dmc"/>
                                 </connections>
                             </tableViewCell>
@@ -386,7 +387,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Woi-uM-fZG"/>
+        <segue reference="GDp-nZ-nrG"/>
+        <segue reference="AEV-Ql-9BO"/>
         <segue reference="IAs-RA-lfK"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -26,6 +26,27 @@ class SongSearchTableViewController: UITableViewController, UISearchResultsUpdat
     func updateSearchResults(for searchController: UISearchController) {
         results.removeAll(keepingCapacity: false)
 
+        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/newguest")
+        
+        comp!.queryItems = [URLQueryItem(name: "party_id", value: "ElP91"), URLQueryItem(name: "search", value: searchController.searchBar.text!)]
+        
+        let url : URL = comp!.url!
+        
+//        let task = URLSession.shared.dataTask(with: url) { (data,  response, error) in
+//            guard let dataResponse = data,
+//                error == nil else {
+//                    print(error?.localizedDescription ?? "Response Error")
+//                    return }
+//            do {
+//                //here dataResponse received from a network request
+//                let jsonResponse = try JSONSerialization.jsonObject(with:
+//                    dataResponse, options: [])
+//                //                print(jsonResponse)
+//                let array = jsonResponse as? [[[String: Any]]]
+//                guard let name = array?["tracks"]["items"][0]["name"] as? String else { return }
+//            }
+//        }
+        
 //        results =
         
         self.tableView.reloadData()

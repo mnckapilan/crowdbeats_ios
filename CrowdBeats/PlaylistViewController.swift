@@ -11,7 +11,7 @@ import UIKit
 class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
     func didPressButton(_ tag: Int) {
-        <#code#>
+        print("TAG: \(tag)")
     }
     
     
@@ -43,19 +43,22 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     {
         var cellDelegate: PlaylistCellDelegate?
         
+        @IBOutlet weak var index: UILabel!
         @IBOutlet weak var songTitle: UILabel!
         
         @IBAction func upvoteButtonPressed(_ sender: UIButton) {
             cellDelegate?.didPressButton(sender.tag)
+            print("UPVOTE BUTTON PRESSED")
         }
         
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistCell", for: indexPath) as! PlaylistCell
 
-        cell.textLabel?.text = songs[indexPath.row].song
-        cell.detailTextLabel?.text = songs[indexPath.row].artist
+        cell.index.text = String(indexPath.row)
+        cell.songTitle.text = songs[indexPath.row].song
+//        cell.artistTitle.text = songs[indexPath.row].artist
 
         return cell
     }
