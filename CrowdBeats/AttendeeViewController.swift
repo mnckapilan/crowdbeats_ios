@@ -14,6 +14,7 @@ class AttendeeViewController: UIViewController , UITextFieldDelegate{
     
     @IBOutlet weak var textfield: UITextField!
    
+    var party_id:String = ""
     
     @IBAction func TextButton(_ sender: UIButton) {
         
@@ -24,7 +25,10 @@ class AttendeeViewController: UIViewController , UITextFieldDelegate{
             
         var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/newguest")
         
-        comp!.queryItems = [URLQueryItem(name: "party_id", value: textfield.text)]
+        party_id = textfield.text!
+        comp!.queryItems = [URLQueryItem(name: "party_id", value: party_id)]
+        
+        
         
         let url : URL = comp!.url!
         
@@ -71,6 +75,18 @@ class AttendeeViewController: UIViewController , UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    
+  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let data = party_id
+        let navVC = segue.destination as! UINavigationController
+        
+         let tableVC = navVC.viewControllers.first as! PlaylistViewController
+            tableVC.party_id = data
+        
     }
     
     /*
