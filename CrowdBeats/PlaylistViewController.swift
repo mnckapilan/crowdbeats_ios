@@ -12,7 +12,28 @@ class PlaylistViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/newguest")
+        
+        comp!.queryItems = [URLQueryItem(name: "party_id", value: textfield.text)]
+        
+        let url : URL = comp!.url!
+        
+        print(url)
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let dataResponse = data,
+                error == nil else {
+                    print(error?.localizedDescription ?? "Response Error")
+                    return }
+            do{
+                //here dataResponse received from a network request
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                    dataResponse, options: [])
+                //                print(jsonResponse)
+                let array = jsonResponse as? [String: Any]
+                guard let success = array?["success"] as? String else { return }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

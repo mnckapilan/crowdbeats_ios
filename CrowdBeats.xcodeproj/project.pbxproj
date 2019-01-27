@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67013CDC21FD4E56006548B0 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67013CDB21FD4E56006548B0 /* SearchTableViewController.swift */; };
 		67D5D4A721FCC51900BE3A2B /* AttendeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5D4A621FCC51900BE3A2B /* AttendeeViewController.swift */; };
 		67D5D4A921FCD4CF00BE3A2B /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5D4A821FCD4CF00BE3A2B /* PlaylistViewController.swift */; };
 		C1E711F221FB5F660065A4A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E711F121FB5F660065A4A6 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67013CDB21FD4E56006548B0 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		67D5D4A621FCC51900BE3A2B /* AttendeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeViewController.swift; sourceTree = "<group>"; };
 		67D5D4A821FCD4CF00BE3A2B /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		C1E711EE21FB5F660065A4A6 /* CrowdBeats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrowdBeats.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,7 @@
 				C1E7120121FB5F690065A4A6 /* Info.plist */,
 				67D5D4A621FCC51900BE3A2B /* AttendeeViewController.swift */,
 				67D5D4A821FCD4CF00BE3A2B /* PlaylistViewController.swift */,
+				67013CDB21FD4E56006548B0 /* SearchTableViewController.swift */,
 			);
 			path = CrowdBeats;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				C1E711F421FB5F660065A4A6 /* RootViewController.swift in Sources */,
 				C1E711F821FB5F660065A4A6 /* ModelController.swift in Sources */,
 				67D5D4A921FCD4CF00BE3A2B /* PlaylistViewController.swift in Sources */,
+				67013CDC21FD4E56006548B0 /* SearchTableViewController.swift in Sources */,
 				C1E711F621FB5F660065A4A6 /* DataViewController.swift in Sources */,
 				67D5D4A721FCC51900BE3A2B /* AttendeeViewController.swift in Sources */,
 				C1E711F221FB5F660065A4A6 /* AppDelegate.swift in Sources */,
