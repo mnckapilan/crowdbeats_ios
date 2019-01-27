@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -162,11 +162,11 @@
                                                     <constraint firstItem="EOs-lG-9hZ" firstAttribute="centerX" secondItem="CSj-Nh-Hc2" secondAttribute="centerX" id="5kA-cF-thE"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xxxx" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-sE-QmC">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="XXXXX" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-sE-QmC">
                                                 <rect key="frame" x="0.0" y="62.5" width="375" height="63"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tev-mx-J6W">
                                                 <rect key="frame" x="0.0" y="125.5" width="375" height="62.5"/>
@@ -272,7 +272,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Playlist" id="trp-ec-nlr">
-                        <barButtonItem key="leftBarButtonItem" title="Exit" id="G9Z-eA-a3W"/>
+                        <barButtonItem key="leftBarButtonItem" title="Exit" id="G9Z-eA-a3W">
+                            <connections>
+                                <segue destination="rXG-fw-72t" kind="modal" id="U9r-Pu-MnC"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="atZ-Vk-qNA">
                             <connections>
                                 <action selector="addButton:" destination="9RV-BV-I0P" id="Px8-cu-ThX"/>
@@ -392,6 +396,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DFm-rX-4wV"/>
+        <segue reference="qdc-0W-Ggx"/>
+        <segue reference="U9r-Pu-MnC"/>
     </inferredMetricsTieBreakers>
 </document>
