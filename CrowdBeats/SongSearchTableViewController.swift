@@ -11,51 +11,41 @@ import UIKit
 class SongSearchTableViewController: UITableViewController {
     
     var party_id:String = ""
-    var array:[String:Any] = [:]
+    var array:NSMutableArray = []
     
-    var results = [String]()
+    var results : [(song : String, artist : String, id : String)] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for i in 0..<array.count {
+            
+            // Create Blog Object
+            guard let ID: String = (array[i] as AnyObject).object(forKey: "id") as? String,
+                let Name: String = (array[i] as AnyObject).object(forKey: "name") as? String,
+                let Artist: String = (array[i] as AnyObject).object(forKey: "artist") as? String
+                else {
+                    print("Error")
+                    return
+                }
+            
+            
+            // Add Blog Objects to mainArray
+            results.append((song: Name, artist: Artist, id: ID ))
+        }
+    tableView.reloadData()
+}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let data = party_id
+        let navVC = segue.destination as! UINavigationController
+        if segue.identifier != "segueSearchCancel" {
+            let tableVC = navVC.viewControllers.first as! SongSearchTableViewController
+            tableVC.party_id = data
+        }
+        
     }
-//
-//    func updateSearchResults(for searchController: UISearchController) {
-//        results.removeAll(keepingCapacity: false)
-//
-//        var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/pla")
-//
-//        comp!.queryItems = [URLQueryItem(name: "party_id", value: "ElP91"), URLQueryItem(name: "search", value: searchController.searchBar.text!)]
-//
-//        let url : URL = comp!.url!
-//
-//        print(url)
-//
-//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//            guard let dataResponse = data,
-//                error == nil else {
-//                    print(error?.localizedDescription ?? "Response Error")
-//                    return }
-//            do{
-//                //here dataResponse received from a network request
-//                let jsonResponse = try JSONSerialization.jsonObject(with:
-//                    dataResponse, options: [])
-//                print(jsonResponse) //Response result
-//                //                print(jsonResponse)
-//                let array = jsonResponse as? [String: Any]
-////                guard let num = min(array?["tracks"]["limit"], array?["tracks"]["total"]) as? Int else { return }
-//
-//            } catch let parsingError {
-//                print("Error", parsingError)
-//            }
-//        }
-//        task.resume()
-//
-////        results =
-//
-//        self.tableView.reloadData()
-//    }
 
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -71,22 +61,42 @@ class SongSearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        array[indexPath]
-//        cell.textLabel?.text = array[indexPath]["name"] as? String
-//        if (resultSearchController.isActive) {
-//            cell.textLabel?.text = results[indexPath.row]
-//        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SongSearchCell", for: indexPath) as! SongSearchCell
+        
+        cell.TitleSong.text = results[indexPath.row].song
+        cell.artistSong.text = results[indexPath.row].artist
+        cell.cellDelegate = self as? SongSearchCellDelegate
+        
         return cell
     }
 
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is SongSearchTableViewController
-        {
-            let vc = segue.destination as? SongSearchTableViewController
-            vc?.party_id = party_id
-        }
+    
+    @IBAction func addButon(_ sender: SongSearchCell) {
+        print("UPVOTE BUTTON PRESSED IN CELL: \(sender.artistSong.text!)")
+        
+            sender.AddButton.isUserInteractionEnabled = false
     }
+    
+    
+}
+
+protocol SongSearchCellDelegate : class {
+    func didPressAddButton(_ sender: SongSearchCell)
+}
+
+class SongSearchCell : UITableViewCell
+{
+    var cellDelegate: SongSearchCellDelegate?
+    
+    @IBOutlet weak var AddButton: UIView!
+    
+    @IBOutlet weak var artistSong: UILabel!
+    @IBOutlet weak var TitleSong: UILabel!
+    
+   
+    @IBAction func AddPressed(_ sender: Any) {
+        cellDelegate?.didPressAddButton(self)
+    }
+    
 }

@@ -11,7 +11,7 @@ import UIKit
 class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
     var party_id:String = ""
-    var array: [String: Any] = [:]
+    var array : NSMutableArray = []
     
     var songs = [(song: "Despacito", artist: "Luis Fonsi", id: "obcowbdeub", votes: 0)]
 
@@ -41,6 +41,7 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
                 // Create Blog Object
                 guard let ID: String = (jsonArray[i] as AnyObject).object(forKey: "id") as? String,
                     let Name: String = (jsonArray[i] as AnyObject).object(forKey: "name") as? String,
+                    let Artist: String = (jsonArray[i] as AnyObject).object(forKey: "artist") as? String,
                     let votes: Int = (jsonArray[i] as AnyObject).object(forKey: "votes") as? Int
                     else {
                         print("Error")
@@ -48,7 +49,7 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
                     }
                 
                 // Add Blog Objects to mainArray
-                songs.append((song: Name, artist: "", id: ID, votes: votes))
+                songs.append((song: Name, artist: Artist, id: ID, votes: votes))
             }
         }
         catch {
@@ -57,8 +58,7 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
         songs = songs.sorted(by: {$0.votes > $1.votes})
         tableView.reloadData()
     }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+    
 
     private func search(search: String) {
         
@@ -86,7 +86,7 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
                 print(4)
                 print(jsonResponse) //Response result
                 //                print(jsonResponse)
-                var array = jsonResponse as? [String: Any]
+                self.array = ((jsonResponse as AnyObject).mutableCopy() as? NSMutableArray)!
                 
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "toSearch", sender: nil)

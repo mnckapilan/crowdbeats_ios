@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -300,22 +300,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="W5Q-A6-45o" style="IBUITableViewCellStyleDefault" id="Ge9-Hf-aBk">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SongSearchCell" id="XbT-U9-li1" customClass="SongSearchCell" customModule="CrowdBeats" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ge9-Hf-aBk" id="Smx-NP-ziN">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XbT-U9-li1" id="KlB-0Z-vdw">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W5Q-A6-45o">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiG-kC-gaO">
+                                            <rect key="frame" x="16" y="1" width="34" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PO4-oM-Qbh">
+                                            <rect key="frame" x="329" y="0.0" width="30" height="43.5"/>
+                                            <state key="normal" title="Add"/>
+                                            <connections>
+                                                <action selector="AddPressed:" destination="XbT-U9-li1" eventType="touchUpInside" id="eY5-94-xSA"/>
+                                                <action selector="addButon:" destination="gfi-Kc-xCJ" eventType="touchUpInside" id="n7a-ju-zjr"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6CH-aH-PrV">
+                                            <rect key="frame" x="16" y="29.5" width="28.5" height="13.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="PO4-oM-Qbh" firstAttribute="top" secondItem="KlB-0Z-vdw" secondAttribute="top" id="J0T-ag-a5c"/>
+                                        <constraint firstItem="6CH-aH-PrV" firstAttribute="leading" secondItem="KlB-0Z-vdw" secondAttribute="leadingMargin" id="J4f-3E-K7s"/>
+                                        <constraint firstItem="UiG-kC-gaO" firstAttribute="top" secondItem="KlB-0Z-vdw" secondAttribute="top" id="Qqm-pK-ahq"/>
+                                        <constraint firstAttribute="bottom" secondItem="PO4-oM-Qbh" secondAttribute="bottom" id="Uj7-vE-Bab"/>
+                                        <constraint firstItem="PO4-oM-Qbh" firstAttribute="trailing" secondItem="KlB-0Z-vdw" secondAttribute="trailingMargin" id="Wh9-IK-BQs"/>
+                                        <constraint firstAttribute="bottom" secondItem="6CH-aH-PrV" secondAttribute="bottom" constant="0.5" id="dtw-L2-shO"/>
+                                        <constraint firstItem="UiG-kC-gaO" firstAttribute="leading" secondItem="KlB-0Z-vdw" secondAttribute="leadingMargin" id="swB-af-q6W"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="AddButton" destination="KlB-0Z-vdw" id="aM5-Wz-mVC"/>
+                                    <outlet property="TitleSong" destination="UiG-kC-gaO" id="9Ch-n9-g8g"/>
+                                    <outlet property="artistSong" destination="6CH-aH-PrV" id="vou-Ke-JzW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -326,7 +353,7 @@
                     <navigationItem key="navigationItem" title="Search" id="9y2-4X-Csv">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8wn-IJ-LP4">
                             <connections>
-                                <segue destination="Gyx-1Q-roc" kind="show" id="MTJ-AZ-MCG"/>
+                                <segue destination="Gyx-1Q-roc" kind="show" identifier="segueSearchCancel" id="MTJ-AZ-MCG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
