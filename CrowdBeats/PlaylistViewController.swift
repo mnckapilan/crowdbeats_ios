@@ -10,6 +10,7 @@ import UIKit
 
 class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
+    var idSongToAdd:String = ""
     var party_id:String = ""
     var array : NSMutableArray = []
     
@@ -20,9 +21,37 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var urlSet = URL(string: "https://crowdbeats-host.herokuapp.com/setplaylist?id=7gJ4LIPzSOgDQgbsnEz9GX");
+        
+        if(idSongToAdd != "") {
+            print(idSongToAdd)
+            var comp = URLComponents(string: "https://crowdbeats-host.herokuapp.com/addsong")
+            
+            //comp!.queryItems = [URLQueryItem(name: "party_id", value: party_id), URLQueryItem(name: "song_uri", value: idSongToAdd)]
+            comp!.queryItems = [URLQueryItem(name:"id", value: idSongToAdd)]
+            
+            let url : URL = comp!.url!
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard let dataResponse = data,
+                    error == nil else {
+                        print(error?.localizedDescription ?? "Response Error")
+                        return }
+                do {
+                    print("WOW")
+                    //here dataResponse received from a network request
+                    let jsonResponse = try JSONSerialization.jsonObject(with:
+                        dataResponse, options: [])
+                    print(jsonResponse)
+                    
+                } catch let parsingError {
+                    
+                    print("Error", parsingError)
+                }
+            }
+            task.resume()
+        }
         songs = []
         
-        print(party_id)
         let myurl = "https://crowdbeats-host.herokuapp.com/playlist"
         
         
@@ -51,6 +80,9 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
                 // Add Blog Objects to mainArray
                 songs.append((song: Name, artist: Artist, id: ID, votes: votes))
             }
+            
+            
+            
         }
         catch {
             print("Error: (Retrieving Data)")
@@ -85,7 +117,6 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
                     dataResponse, options: [])
                 print(4)
                 print(jsonResponse) //Response result
-                //                print(jsonResponse)
                 self.array = ((jsonResponse as AnyObject).mutableCopy() as? NSMutableArray)!
                 
                 DispatchQueue.main.async {
@@ -93,17 +124,17 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
                 }
                 
             } catch let parsingError {
-//                print(30)
+
                 print("Error", parsingError)
             }
-//            print(20)
+
             
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "toSearch", sender: nil)
             }
         }
         task.resume()
-//        print(array)
+
     }
     
     func didPressButton(_ sender: PlaylistCell) {

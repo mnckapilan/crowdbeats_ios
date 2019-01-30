@@ -8,16 +8,22 @@
 
 import UIKit
 
-class SongSearchTableViewController: UITableViewController {
+class SongSearchTableViewController: UITableViewController, SongSearchCellDelegate {
+    
+    
+    
+    var idSongToAdd:String = ""
     
     var party_id:String = ""
     var array:NSMutableArray = []
     
     var results : [(song : String, artist : String, id : String)] = []
 
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         for i in 0..<array.count {
             
             // Create Blog Object
@@ -37,26 +43,32 @@ class SongSearchTableViewController: UITableViewController {
 }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let data = party_id
+        let id = idSongToAdd
         let navVC = segue.destination as! UINavigationController
-        if segue.identifier != "segueSearchCancel" {
-            let tableVC = navVC.viewControllers.first as! SongSearchTableViewController
+        if segue.identifier == "segueSearchCancel" {
+            let tableVC = navVC.viewControllers.first as! PlaylistViewController
             tableVC.party_id = data
+            tableVC.idSongToAdd = id
         }
         
     }
 
-
+    func didPressAddButton(_ sender: SongSearchCell) {
+        self.idSongToAdd = sender.id
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "segueSearchCancel", sender: nil)
+        }
+        
+        
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if  (resultSearchController.isActive) {
-//            return results.count
-//        } else {
-//            return 0
-//        }
         return results.count
     }
 
@@ -65,18 +77,12 @@ class SongSearchTableViewController: UITableViewController {
         
         cell.TitleSong.text = results[indexPath.row].song
         cell.artistSong.text = results[indexPath.row].artist
-        cell.cellDelegate = self as? SongSearchCellDelegate
+        cell.cellDelegate = self
+        cell.id = results[indexPath.row].id
         
         return cell
     }
 
-    
-    
-    @IBAction func addButon(_ sender: SongSearchCell) {
-        print("UPVOTE BUTTON PRESSED IN CELL: \(sender.artistSong.text!)")
-        
-            sender.AddButton.isUserInteractionEnabled = false
-    }
     
     
 }
@@ -88,14 +94,14 @@ protocol SongSearchCellDelegate : class {
 class SongSearchCell : UITableViewCell
 {
     var cellDelegate: SongSearchCellDelegate?
-    
+    var id: String = ""
     @IBOutlet weak var AddButton: UIView!
     
     @IBOutlet weak var artistSong: UILabel!
     @IBOutlet weak var TitleSong: UILabel!
     
    
-    @IBAction func AddPressed(_ sender: Any) {
+    @IBAction func AddPressed(_ sender: UIButton) {
         cellDelegate?.didPressAddButton(self)
     }
     
