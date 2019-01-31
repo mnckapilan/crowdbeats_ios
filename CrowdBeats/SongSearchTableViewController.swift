@@ -24,6 +24,9 @@ class SongSearchTableViewController: UITableViewController, SongSearchCellDelega
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        tableView.rowHeight = 54
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         for i in 0..<array.count {
             
             // Create Blog Object

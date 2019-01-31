@@ -21,7 +21,9 @@ class PlaylistViewController: UITableViewController, PlaylistCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var urlSet = URL(string: "https://crowdbeats-host.herokuapp.com/setplaylist?id=7gJ4LIPzSOgDQgbsnEz9GX");
+        
+        tableView.rowHeight = 54
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         if(idSongToAdd != "") {
             print(idSongToAdd)
